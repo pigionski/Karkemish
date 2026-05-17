@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Euphrates Boat Tours</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #050b14;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 10vw;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 6rem;
+      font-weight: 800;
+      line-height: 0.9;
+      max-width: 900px;
+    }
+
+    .hero p {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .cta {
+      margin-top: 2rem;
+    }
+
+    .cta button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 999px;
+      background: white;
+      color: black;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .cta button:hover {
+      transform: scale(1.05);
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 10rem 10vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-title {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 2rem;
+      transition: 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    footer {
+      padding: 4rem;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+    }
+
+    @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bg"></canvas>
+
+  <div class="hero">
+    <h1>
+      Explore Greece<br>
+      Beyond The Shore
+    </h1>
+
+    <p>
+      Private boat experiences, hidden beaches, sunset cruises,
+      and immersive Aegean adventures.
+    </p>
+
+    <div class="cta">
+      <button>Book Experience</button>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="section-title">Experiences</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Sunset Cruise</h3>
+        <p>
+          Golden hour tours with panoramic coastal views and open sea atmosphere.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Private Islands</h3>
+        <p>
+          Access hidden beaches and isolated swimming locations unreachable by road.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Luxury Charter</h3>
+        <p>
+          Full-day premium boat experiences with custom routes and onboard service.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Gallery</h2>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" />
+      <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?q=80&w=1200&auto=format&fit=crop" />
+      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=1200&auto=format&fit=crop" />
+    </div>
+  </section>
+
+  <footer>
+    Euphrates Boat Tours — Greece
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+  <script>
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById("bg"),
+      antialias: true
+    });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    camera.position.z = 5;
+
+    const geometry = new THREE.PlaneGeometry(20, 20, 128, 128);
+
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x0a1c33,
+      wireframe: true
+    });
+
+    const plane = new THREE.Mesh(geometry, material);
+
+    scene.add(plane);
+
+    const positions = geometry.attributes.position;
+
+    function animate(time) {
+      requestAnimationFrame(animate);
+
+      for (let i = 0; i < positions.count; i++) {
+        const x = positions.getX(i);
+        const y = positions.getY(i);
+
+        const z =
+          Math.sin(x * 0.8 + time * 0.001) * 0.3 +
+          Math.cos(y * 0.8 + time * 0.0015) * 0.3;
+
+        positions.setZ(i, z);
+      }
+
+      positions.needsUpdate = true;
+
+      plane.rotation.z += 0.0008;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+
+</body>
+</html>
