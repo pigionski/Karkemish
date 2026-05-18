@@ -6,6 +6,7 @@
 <title>Euphrates Boat Tours</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -152,7 +153,7 @@ section {
   padding: 1.1rem 2.4rem;
 }
 .wa-icon { font-size: 1.3rem; }
-
+  
 /* Gallery */
 .gallery {
   display: grid;
@@ -301,6 +302,18 @@ footer {
   </div>
 </section>
 
+<section>
+  <h2 class="section-title">The Route</h2>
+  <p class="section-lead">
+    The boat departs from Al Kesra village and sails upstream along the Euphrates,
+    stopping first at Jebel Aruda, then crossing to Tell Munbaqa on the opposite shore.
+  </p>
+  <div id="map" style="width:100%;height:520px;border-radius:24px;margin-top:2.5rem;overflow:hidden;border:1px solid rgba(255,255,255,0.12);"></div>
+  <div style="display:flex;gap:2rem;margin-top:1.2rem;flex-wrap:wrap;">
+    <span style="color:rgba(255,255,255,0.7);font-size:0.9rem;">&#9679; <span style="color:#4fc3f7">Al Kesra</span> &nbsp; &#9679; <span style="color:#ffd54f">Jebel Aruda</span> &nbsp; &#9679; <span style="color:#ef9a9a">Tell Munbaqa</span></span>
+  </div>
+</section>
+  
 <!-- Gallery -->
 <section>
   <h2 class="section-title">Gallery</h2>
@@ -427,5 +440,36 @@ footer {
   });
 </script>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const routeCoords = [
+    [36.108, 38.198],[36.125, 38.185],[36.140, 38.172],[36.155, 38.162],
+    [36.170, 38.155],[36.185, 38.150],[36.194, 38.148],[36.202, 38.135],
+    [36.210, 38.118],[36.216, 38.095],[36.220, 38.075],[36.222, 38.060],
+  ];
+  const stops = [
+    { lat:36.108, lng:38.198, color:"#4fc3f7", name:"Al Kesra (Departure)" },
+    { lat:36.194, lng:38.148, color:"#ffd54f", name:"Jebel Aruda — 5,200 yrs old" },
+    { lat:36.222, lng:38.060, color:"#ef9a9a", name:"Tell Munbaqa — 3,400 yrs old" },
+  ];
+  const map = L.map('map',{center:[36.165,38.13],zoom:12,scrollWheelZoom:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+    attribution:'&copy; OpenStreetMap &copy; CARTO',subdomains:'abcd',maxZoom:19
+  }).addTo(map);
+  L.polyline(routeCoords,{color:'rgba(79,195,247,0.2)',weight:4,dashArray:'8 6'}).addTo(map);
+  const animLine = L.polyline([],{color:'#4fc3f7',weight:3}).addTo(map);
+  let i=0;
+  function draw(){if(i<routeCoords.length){animLine.addLatLng(routeCoords[i++]);setTimeout(draw,120);}}
+  const boat = L.marker(routeCoords[0],{icon:L.divIcon({className:'',html:'<div style="font-size:22px">⛵</div>',iconAnchor:[12,12]})}).addTo(map);
+  let bi=0;
+  function moveBoat(){bi=(bi+1)%routeCoords.length;boat.setLatLng(routeCoords[bi]);setTimeout(moveBoat,bi===0?1500:220);}
+  stops.forEach(s=>{
+    L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:`<div style="width:14px;height:14px;border-radius:50%;background:${s.color};border:3px solid white;box-shadow:0 0 10px ${s.color}"></div>`,iconAnchor:[7,7]})})
+    .addTo(map).bindPopup(s.name);
+  });
+  let started=false;
+  new IntersectionObserver(e=>{if(e[0].isIntersecting&&!started){started=true;setTimeout(draw,300);setTimeout(moveBoat,routeCoords.length*120+700);}},{threshold:0.3}).observe(document.getElementById('map'));
+</script>
+  
 </body>
 </html>
