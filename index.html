@@ -7,11 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: "Inter", sans-serif;
@@ -20,135 +16,173 @@ body {
   overflow-x: hidden;
 }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
+canvas { position: fixed; top: 0; left: 0; z-index: -1; }
 
+a { color: inherit; text-decoration: none; }
+
+/* Hero */
 .hero {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 10vw;
-  position: relative;
 }
-
 .hero h1 {
   font-size: 6rem;
   font-weight: 800;
   line-height: 0.9;
   max-width: 900px;
 }
-
 .hero p {
   margin-top: 2rem;
-  font-size: 1.2rem;
-  color: rgba(255,255,255,0.7);
-  max-width: 500px;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 520px;
+  line-height: 1.7;
 }
-
-.cta {
-  margin-top: 2rem;
-}
-
-.cta button {
-  padding: 1rem 2rem;
+.cta { margin-top: 2.5rem; }
+.cta a button, .whatsapp-btn {
+  padding: 1rem 2.2rem;
   border: none;
   border-radius: 999px;
   background: white;
-  color: black;
+  color: #020a1e;
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform 0.25s, box-shadow 0.25s;
 }
-
-.cta button:hover {
+.cta a button:hover, .whatsapp-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(0,150,255,0.30);
 }
 
+/* Sections */
 section {
-  min-height: 100vh;
-  padding: 10rem 10vw;
+  min-height: 60vh;
+  padding: 8rem 10vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .section-title {
-  font-size: 4rem;
-  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+.section-lead {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.72);
+  max-width: 680px;
+  line-height: 1.75;
 }
 
+/* Cards */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
-
 .card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 24px;
   padding: 2rem;
-  transition: 0.4s ease;
+  transition: transform 0.35s, background 0.35s;
+}
+.card:hover { transform: translateY(-8px); background: rgba(255,255,255,0.10); }
+.card-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(90,210,255,0.90);
+  margin-bottom: 0.75rem;
+}
+.card h3 { font-size: 1.45rem; margin-bottom: 0.75rem; }
+.card p  { color: rgba(255,255,255,0.70); line-height: 1.7; font-size: 0.97rem; }
+
+.site-link {
+  color: rgba(120,220,255,0.9);
+  border-bottom: 1px solid rgba(120,220,255,0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+.site-link:hover { color: white; border-color: white; }
+
+/* Price cards */
+.price-tag {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: rgba(120,220,255,0.95);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.card.featured {
+  border-color: rgba(90,210,255,0.40);
+  background: rgba(10,80,140,0.25);
 }
 
-.card:hover {
-  transform: translateY(-10px);
-  background: rgba(255,255,255,0.08);
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
 }
-
-.card h3 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+.info-block {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 20px;
+  padding: 2rem;
 }
+.info-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.info-block h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+.info-block p  { color: rgba(255,255,255,0.68); line-height: 1.68; font-size: 0.96rem; }
 
-.card p {
-  color: rgba(255,255,255,0.7);
-  line-height: 1.6;
+/* Booking */
+.booking-cta { margin-top: 2.5rem; }
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  padding: 1.1rem 2.4rem;
 }
+.wa-icon { font-size: 1.3rem; }
 
+/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
-
 .gallery img {
   width: 100%;
-  height: 300px;
+  height: 280px;
   object-fit: cover;
-  border-radius: 20px;
-  transition: 0.4s ease;
+  border-radius: 18px;
+  transition: transform 0.35s;
 }
+.gallery img:hover { transform: scale(1.03); }
 
-.gallery img:hover {
-  transform: scale(1.03);
-}
-
+/* Footer */
 footer {
   padding: 4rem;
   text-align: center;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.42);
+  line-height: 2;
 }
 
+/* Mobile */
 @media(max-width: 768px) {
-  .hero h1 {
-    font-size: 3.5rem;
-  }
-  .section-title {
-    font-size: 2.5rem;
-  }
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+  .hero h1       { font-size: 3rem; }
+  .section-title { font-size: 2.2rem; }
+  .gallery       { grid-template-columns: 1fr; }
+  section        { padding: 6rem 6vw; }
 }
 </style>
 </head>
@@ -156,106 +190,169 @@ footer {
 
 <canvas id="bg"></canvas>
 
+<!-- Hero -->
 <div class="hero">
-  <h1>
-    Explore The Euphrates<br>
-    Beyond The Shore
-  </h1>
+  <h1>Sail the Syrian<br>Euphrates</h1>
   <p>
-    Experience private boat tours, hidden beaches and sunset cruises,
-    where ancient civilizations were born.
+    A private boat journey through 5,000 years of history â€” two monumental
+    archaeological sites, wild river birds and breathtaking landscapes along
+    the Middle Euphrates.
   </p>
   <div class="cta">
-    <button>Book Experience</button>
+    <a href="https://wa.me/963984773014" target="_blank"><button>Book via WhatsApp</button></a>
   </div>
 </div>
 
+<!-- The two sites -->
 <section>
-  <h2 class="section-title">Experiences</h2>
+  <h2 class="section-title">The Sites</h2>
+  <p class="section-lead">
+    Your large boat â€” comfortable for up to <strong>12 people</strong> and fully
+    equipped with safety features â€” takes you to two extraordinary places most
+    travellers never reach.
+  </p>
   <div class="cards">
     <div class="card">
-      <h3>Sunset Cruise</h3>
+      <div class="card-tag">5,200 years old Â· Late Chalcolithic</div>
+      <h3><a href="https://maps.app.goo.gl/zqRHC4jQe7fvHRm5A" target="_blank" class="site-link">Jebel Aruda â†—</a></h3>
       <p>
-        Golden hour tours with panoramic views and immersive atmosphere.
+        Founded by colonists from Uruk in southern Iraq, Jebel Aruda is one of the
+        oldest urban settlements along the Euphrates. Walk through original ancient
+        streets, houses, storerooms and temples â€” an unparalleled window into
+        Late Chalcolithic city life.
       </p>
     </div>
     <div class="card">
-      <h3>Private Islands</h3>
+      <div class="card-tag">3,400 years old Â· Late Bronze Age</div>
+      <h3><a href="https://maps.app.goo.gl/34EwpL1UbGVeBqHj6" target="_blank" class="site-link">Tell Munbaqa â†—</a></h3>
       <p>
-        Access hidden beaches and isolated swimming locations unreachable by road.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Luxury Charter</h3>
-      <p>
-        Full-day premium boat experiences with custom routes, onboard service and archeological visits.
+        Ancient <em>Ekalte</em> â€” a fortified Bronze Age town on the opposite shore.
+        Its monumental architecture is remarkably preserved: stroll through real
+        streets and enter houses that have stood for over three millennia.
       </p>
     </div>
   </div>
 </section>
 
+<!-- Getting there -->
+<section>
+  <h2 class="section-title">Getting There</h2>
+  <div class="info-grid">
+    <div class="info-block">
+      <div class="info-icon">âœˆï¸</div>
+      <h3>From Aleppo</h3>
+      <p>
+        A comfortable <strong>1.5-hour drive</strong> from Aleppo International
+        Airport brings you to the
+        <a href="https://maps.app.goo.gl/q9U151pmyazK8gEb8" target="_blank" class="site-link">village of Al Kesra â†—</a>,
+        where you park and board directly for the river trip.
+      </p>
+    </div>
+    <div class="info-block">
+      <div class="info-icon">â›µ</div>
+      <h3>The Journey</h3>
+      <p>
+        Sail surrounded by wild water birds, small fishing boats and a landscape
+        of stunning beauty. The river and both sites are <strong>completely safe</strong>
+        to visit.
+      </p>
+    </div>
+    <div class="info-block">
+      <div class="info-icon">ðŸŽ’</div>
+      <h3>What to Bring</h3>
+      <p>
+        Wear a <strong>hat</strong> and <strong>sport shoes</strong>. Bring your
+        own food and water â€” there are no facilities at the sites.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section>
+  <h2 class="section-title">Prices</h2>
+  <p class="section-lead">Cash USD only. The boat holds up to 12 people.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="price-tag">$40</div>
+      <h3>Jebel Aruda</h3>
+      <p>~2 hours on the river. Visit the 5,200-year-old Uruk colony â€” original ancient streets, temples and storerooms preserved since the 4th millennium BC.</p>
+    </div>
+    <div class="card featured">
+      <div class="price-tag">$70</div>
+      <h3>Both Sites</h3>
+      <p>~4 hours total. Jebel Aruda <em>plus</em> Tell Munbaqa on the opposite shore â€” the complete ancient Euphrates experience across two great eras of history.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Booking -->
+<section>
+  <h2 class="section-title">Reserve Your Trip</h2>
+  <p class="section-lead">
+    Send a WhatsApp message in <strong>any language</strong> to captain
+    <strong>Daham Al Mousa</strong>. Only Arabic is spoken, but automatic
+    translation works perfectly well.
+  </p>
+  <div class="booking-cta">
+    <a href="https://wa.me/963984773014" target="_blank">
+      <button class="whatsapp-btn">
+        <span class="wa-icon">ðŸ’¬</span> +963 984 773 014
+      </button>
+    </a>
+  </div>
+</section>
+
+<!-- Gallery -->
 <section>
   <h2 class="section-title">Gallery</h2>
   <div class="gallery">
-    <img src="images/Euphrates_from_The_Mound_of_Carchemish._Accidents_of_an_antiquary's_life._1910.jpg" />
-    <img src="https://disci.unibo.it/en/research/archaeological-missions/achaeological-missions-abroad/karkemish-turkey/@@unibo.tiles.richtext/edd353745b804e8080f92d7523ad53ea/@@images/f343e45e-ed0c-41ba-a17d-1984c17a55fc.jpeg" />
-    <img src="images/euphrate2.jpg" />
+    <img src="images/Euphrates_from_The_Mound_of_Carchemish._Accidents_of_an_antiquary's_life._1910.jpg" alt="Euphrates from Carchemish, 1910" />
+    <img src="https://disci.unibo.it/en/research/archaeological-missions/achaeological-missions-abroad/karkemish-turkey/@@unibo.tiles.richtext/edd353745b804e8080f92d7523ad53ea/@@images/f343e45e-ed0c-41ba-a17d-1984c17a55fc.jpeg" alt="Karkemish archaeological site" />
+    <img src="images/euphrate2.jpg" alt="The Euphrates river" />
   </div>
 </section>
 
 <footer>
-  Euphrates Boat Tours
+  Euphrates Boat Tours Â· Al Kesra, Syria<br>
+  <span style="font-size:0.85em">Captain Daham Al Mousa Â·
+    <a href="https://wa.me/963984773014" style="color:rgba(255,255,255,0.42)">+963 984 773 014</a>
+  </span>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script>
-  // ── River background ──────────────────────────────────────────────────────
-  //  The river flows right-to-left (negative X).
-  //  Scrolling down speeds up the current and shifts the camera slightly,
-  //  giving a parallax feel as you descend the page.
-  // ─────────────────────────────────────────────────────────────────────────
-
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("bg"), antialias: true, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   camera.position.set(0, 6, 0);
-  camera.lookAt(0, 0, 0);   // top-down-ish view of the river plane
+  camera.lookAt(0, 0, 0);
 
-  // Wide river plane — subdivided finely for vertex waves
-  const W = 40, H = 60, SEG = 180, SEGV = 220;
-  const geometry = new THREE.PlaneGeometry(W, H, SEG, SEGV);
-  geometry.rotateX(-Math.PI / 2);   // lay flat
+  const geometry = new THREE.PlaneGeometry(40, 60, 180, 220);
+  geometry.rotateX(-Math.PI / 2);
 
-  // Custom shader material — rich water colours, animated flow lines
   const material = new THREE.ShaderMaterial({
     uniforms: {
-      uTime:      { value: 0 },
-      uFlow:      { value: 0 },   // cumulative right-to-left offset driven by time + scroll
-      uScrollT:   { value: 0 },   // 0-1 scroll progress, used to deepen colour
+      uTime:    { value: 0 },
+      uFlow:    { value: 0 },
+      uScrollT: { value: 0 },
     },
     vertexShader: `
-      uniform float uTime;
       uniform float uFlow;
       varying vec2  vUv;
       varying float vHeight;
-
-      // layered sine waves flowing along -X (right to left)
       float riverHeight(vec2 p) {
         float h = 0.0;
-        // primary current — long, gentle swells
         h += sin( p.x * 0.25 + p.y * 0.07 + uFlow * 1.0  ) * 0.18;
         h += sin( p.x * 0.18 - p.y * 0.12 + uFlow * 0.8  ) * 0.14;
-        // secondary ripples
         h += sin( p.x * 0.60 + p.y * 0.30 + uFlow * 2.2  ) * 0.07;
         h += sin( p.x * 0.45 - p.y * 0.22 + uFlow * 1.8  ) * 0.06;
-        // fine surface chop
         h += sin( p.x * 1.40 + p.y * 0.80 + uFlow * 3.5  ) * 0.025;
         h += cos( p.x * 1.10 - p.y * 0.60 + uFlow * 2.9  ) * 0.020;
         return h;
       }
-
       void main() {
         vUv = uv;
         vec3 pos = position;
@@ -265,54 +362,32 @@ footer {
       }
     `,
     fragmentShader: `
-      uniform float uTime;
       uniform float uFlow;
       uniform float uScrollT;
       varying vec2  vUv;
       varying float vHeight;
-
       void main() {
-        // ── base colour: bright river blues, occasional green shimmer ──
-        vec3 deepWater   = vec3(0.02, 0.10, 0.30);   // deep sapphire blue
-        vec3 midWater    = vec3(0.04, 0.28, 0.58);   // bright cobalt blue
-        vec3 shallowCap  = vec3(0.10, 0.60, 0.72);   // cyan-blue with a touch of green
-        vec3 foamWhite   = vec3(0.78, 0.94, 0.98);   // near-white with cool blue tint
-
-        // occasional green shimmer — varies with flow and position
+        vec3 deepWater   = vec3(0.02, 0.10, 0.30);
+        vec3 midWater    = vec3(0.04, 0.28, 0.58);
+        vec3 shallowCap  = vec3(0.10, 0.60, 0.72);
+        vec3 foamWhite   = vec3(0.78, 0.94, 0.98);
         vec3 greenShimmer = vec3(0.08, 0.55, 0.38);
         float greenMask = sin(vUv.x * 5.2 + uFlow * 0.4) * sin(vUv.y * 3.8 - uFlow * 0.3);
-        greenMask = smoothstep(0.55, 1.0, greenMask) * 0.30;  // sparse, subtle
-
-        // map height to colour bands
-        float t = (vHeight + 0.45) / 0.90;          // 0..1
-        t = clamp(t, 0.0, 1.0);
-
-        vec3 col = mix(deepWater, midWater,   smoothstep(0.0, 0.45, t));
+        greenMask = smoothstep(0.55, 1.0, greenMask) * 0.30;
+        float t = clamp((vHeight + 0.45) / 0.90, 0.0, 1.0);
+        vec3 col = mix(deepWater, midWater,   smoothstep(0.0,  0.45, t));
         col      = mix(col,       shallowCap, smoothstep(0.45, 0.80, t));
         col      = mix(col,       foamWhite,  smoothstep(0.80, 1.00, t));
-
-        // blend in occasional green patches
-        col = mix(col, greenShimmer, greenMask * (1.0 - t * 0.5));
-
-        // overall brightness lift
-        col = col * 1.30;
-
-        // ── flowing highlight streaks (current lines) ──
-        // streaks run along world-X (right to left), encoded in vUv.x offset by flow
+        col      = mix(col, greenShimmer, greenMask * (1.0 - t * 0.5));
+        col     *= 1.30;
         float streak = vUv.x - uFlow * 0.07;
         streak = mod(streak * 8.0, 1.0);
         float line = smoothstep(0.88, 1.0, streak) * smoothstep(1.0, 0.88, streak + 0.04);
-        // modulate streak brightness by position in U to break uniformity
-        float var = sin(vUv.y * 31.0 + uFlow * 0.5) * 0.5 + 0.5;
+        float var  = sin(vUv.y * 31.0 + uFlow * 0.5) * 0.5 + 0.5;
         col += vec3(0.78, 0.94, 0.98) * line * 0.22 * var;
-
-        // ── deeper colour as user scrolls down (river grows darker / deeper) ──
-        col = mix(col, col * 0.55, uScrollT * 0.6);
-
-        // ── subtle vignette from sides ──
+        col  = mix(col, col * 0.55, uScrollT * 0.6);
         float vignX = smoothstep(0.0, 0.18, vUv.x) * smoothstep(1.0, 0.82, vUv.x);
         col *= mix(0.50, 1.0, vignX);
-
         gl_FragColor = vec4(col, 1.0);
       }
     `,
@@ -321,49 +396,32 @@ footer {
 
   const plane = new THREE.Mesh(geometry, material);
   scene.add(plane);
-
-  // Very faint ambient so the dark troughs stay readable
   scene.add(new THREE.AmbientLight(0x0a2040, 1.2));
   const dirLight = new THREE.DirectionalLight(0x5adaff, 0.6);
   dirLight.position.set(-5, 8, 3);
   scene.add(dirLight);
 
-  // ── Scroll tracking ──────────────────────────────────────────────────────
-  let scrollY     = 0;
-  let scrollRatio = 0;   // 0..1 across the full page height
-
+  let scrollRatio = 0;
   window.addEventListener("scroll", () => {
-    scrollY     = window.scrollY;
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    scrollRatio = maxScroll > 0 ? scrollY / maxScroll : 0;
+    const max = document.body.scrollHeight - window.innerHeight;
+    scrollRatio = max > 0 ? window.scrollY / max : 0;
   });
 
-  // ── Animation loop ───────────────────────────────────────────────────────
   let then = 0;
   function animate(now) {
     requestAnimationFrame(animate);
     const dt = (now - then) * 0.001;
     then = now;
-
-    // Base current speed + extra speed proportional to scroll position
-    // (the deeper you scroll down the page, the faster the river)
-    const currentSpeed = 0.55 + scrollRatio * 1.2;
-    material.uniforms.uFlow.value    += dt * currentSpeed;
+    material.uniforms.uFlow.value    += dt * (0.55 + scrollRatio * 1.2);
     material.uniforms.uTime.value     = now * 0.001;
     material.uniforms.uScrollT.value  = scrollRatio;
-
-    // Camera drifts slightly right→left (along -X) as the river flows,
-    // reinforcing the sense of being carried downstream
     camera.position.x = -material.uniforms.uFlow.value * 0.04;
-    // Also tilt camera slightly as user scrolls down for parallax depth
     camera.position.z = -scrollRatio * 2.0;
     camera.lookAt(camera.position.x, 0, camera.position.z);
-
     renderer.render(scene, camera);
   }
   animate(0);
 
-  // ── Resize ───────────────────────────────────────────────────────────────
   window.addEventListener("resize", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
