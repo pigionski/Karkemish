@@ -1,251 +1,375 @@
-https://github.com/pigionski/Karkemish/blob/cloudflare/workers-autoconfig/index.html      padding-left: 10vw;
-      position: relative;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Euphrates Boat Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .hero h1 {
-      font-size: 6rem;
-      font-weight: 800;
-      line-height: 0.9;
-      max-width: 900px;
-    }
+body {
+  font-family: "Inter", sans-serif;
+  background: #020a1e;
+  color: white;
+  overflow-x: hidden;
+}
 
-    .hero p {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 500px;
-      line-height: 1.6;
-    }
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
-    .cta {
-      margin-top: 2rem;
-    }
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10vw;
+  position: relative;
+}
 
-    .cta button {
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 999px;
-      background: white;
-      color: black;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
+.hero h1 {
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 0.9;
+  max-width: 900px;
+}
 
-    .cta button:hover {
-      transform: scale(1.05);
-    }
+.hero p {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 500px;
+  line-height: 1.6;
+}
 
-    section {
-      min-height: 100vh;
-      padding: 10rem 10vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+.cta {
+  margin-top: 2rem;
+}
 
-    .section-title {
-      font-size: 4rem;
-      margin-bottom: 2rem;
-    }
+.cta button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 999px;
+  background: white;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
+.cta button:hover {
+  transform: scale(1.05);
+}
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: 0.4s ease;
-    }
+section {
+  min-height: 100vh;
+  padding: 10rem 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    .card:hover {
-      transform: translateY(-10px);
-      background: rgba(255,255,255,0.08);
-    }
+.section-title {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
 
-    .card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
 
-    .card p {
-      color: rgba(255,255,255,0.7);
-      line-height: 1.6;
-    }
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: 0.4s ease;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 3rem;
-    }
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.08);
+}
 
-    .gallery img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 20px;
-      transition: 0.4s ease;
-    }
+.card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
 
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
+.card p {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
 
-    footer {
-      padding: 4rem;
-      text-align: center;
-      color: rgba(255,255,255,0.5);
-    }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
 
-    @media(max-width: 768px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
+.gallery img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: 0.4s ease;
+}
 
-      .section-title {
-        font-size: 2.5rem;
-      }
+.gallery img:hover {
+  transform: scale(1.03);
+}
 
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+footer {
+  padding: 4rem;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+}
+
+@media(max-width: 768px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+  .section-title {
+    font-size: 2.5rem;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 <body>
 
-  <canvas id="bg"></canvas>
+<canvas id="bg"></canvas>
 
-  <div class="hero">
-    <h1>
-      Explore The Euphrates<br>
-      Beyond The Shore
-    </h1>
+<div class="hero">
+  <h1>
+    Explore The Euphrates<br>
+    Beyond The Shore
+  </h1>
+  <p>
+    Experience private boat tours, hidden beaches and sunset cruises,
+    where ancient civilizations were born.
+  </p>
+  <div class="cta">
+    <button>Book Experience</button>
+  </div>
+</div>
 
-    <p>
-      Experience private boat tours, hidden beaches and sunset cruises,
-      where ancient civilizations were born.
-    </p>
-
-    <div class="cta">
-      <button>Book Experience</button>
+<section>
+  <h2 class="section-title">Experiences</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Sunset Cruise</h3>
+      <p>
+        Golden hour tours with panoramic views and immersive atmosphere.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Private Islands</h3>
+      <p>
+        Access hidden beaches and isolated swimming locations unreachable by road.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Luxury Charter</h3>
+      <p>
+        Full-day premium boat experiences with custom routes, onboard service and archeological visits.
+      </p>
     </div>
   </div>
+</section>
 
-  <section>
-    <h2 class="section-title">Experiences</h2>
+<section>
+  <h2 class="section-title">Gallery</h2>
+  <div class="gallery">
+    <img src="images/Euphrates_from_The_Mound_of_Carchemish._Accidents_of_an_antiquary's_life._1910.jpg" />
+    <img src="https://disci.unibo.it/en/research/archaeological-missions/achaeological-missions-abroad/karkemish-turkey/@@unibo.tiles.richtext/edd353745b804e8080f92d7523ad53ea/@@images/f343e45e-ed0c-41ba-a17d-1984c17a55fc.jpeg" />
+    <img src="images/euphrate2.jpg" />
+  </div>
+</section>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Sunset Cruise</h3>
-        <p>
-          Golden hour tours with panoramic views and immersive atmosphere.
-        </p>
-      </div>
+<footer>
+  Euphrates Boat Tours
+</footer>
 
-      <div class="card">
-        <h3>Private Islands</h3>
-        <p>
-          Access hidden beaches and isolated swimming locations unreachable by road.
-        </p>
-      </div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script>
+  // ── River background ──────────────────────────────────────────────────────
+  //  The river flows right-to-left (negative X).
+  //  Scrolling down speeds up the current and shifts the camera slightly,
+  //  giving a parallax feel as you descend the page.
+  // ─────────────────────────────────────────────────────────────────────────
 
-      <div class="card">
-        <h3>Luxury Charter</h3>
-        <p>
-          Full-day premium boat experiences with custom routes, onboard service and archeological visits.
-        </p>
-      </div>
-    </div>
-  </section>
+  const scene    = new THREE.Scene();
+  const camera   = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("bg"), antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  camera.position.set(0, 6, 0);
+  camera.lookAt(0, 0, 0);   // top-down-ish view of the river plane
 
-  <section>
-    <h2 class="section-title">Gallery</h2>
+  // Wide river plane — subdivided finely for vertex waves
+  const W = 40, H = 60, SEG = 180, SEGV = 220;
+  const geometry = new THREE.PlaneGeometry(W, H, SEG, SEGV);
+  geometry.rotateX(-Math.PI / 2);   // lay flat
 
-    <div class="gallery">
-      <img src="images/Euphrates_from_The_Mound_of_Carchemish._Accidents_of_an_antiquary's_life._1910.jpg" />
-      <img src="https://disci.unibo.it/en/research/archaeological-missions/achaeological-missions-abroad/karkemish-turkey/@@unibo.tiles.richtext/edd353745b804e8080f92d7523ad53ea/@@images/f343e45e-ed0c-41ba-a17d-1984c17a55fc.jpeg" />
-      <img src="images/euphrate2.jpg" />
-    </div>
-  </section>
+  // Custom shader material — rich water colours, animated flow lines
+  const material = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:      { value: 0 },
+      uFlow:      { value: 0 },   // cumulative right-to-left offset driven by time + scroll
+      uScrollT:   { value: 0 },   // 0-1 scroll progress, used to deepen colour
+    },
+    vertexShader: `
+      uniform float uTime;
+      uniform float uFlow;
+      varying vec2  vUv;
+      varying float vHeight;
 
-  <footer>
-    Euphrates Boat Tours
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
-  <script>
-    const scene = new THREE.Scene();
-
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-
-    const renderer = new THREE.WebGLRenderer({
-      canvas: document.getElementById("bg"),
-      antialias: true
-    });
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    camera.position.z = 5;
-
-    const geometry = new THREE.PlaneGeometry(20, 20, 128, 128);
-
-    const material = new THREE.MeshBasicMaterial({
-      color: 0x0a1c33,
-      wireframe: true
-    });
-
-    const plane = new THREE.Mesh(geometry, material);
-
-    scene.add(plane);
-
-    const positions = geometry.attributes.position;
-
-    function animate(time) {
-      requestAnimationFrame(animate);
-
-      for (let i = 0; i < positions.count; i++) {
-        const x = positions.getX(i);
-        const y = positions.getY(i);
-
-        const z =
-          Math.sin(x * 0.8 + time * 0.001) * 0.3 +
-          Math.cos(y * 0.8 + time * 0.0015) * 0.3;
-
-        positions.setZ(i, z);
+      // layered sine waves flowing along -X (right to left)
+      float riverHeight(vec2 p) {
+        float h = 0.0;
+        // primary current — long, gentle swells
+        h += sin( p.x * 0.25 + p.y * 0.07 + uFlow * 1.0  ) * 0.18;
+        h += sin( p.x * 0.18 - p.y * 0.12 + uFlow * 0.8  ) * 0.14;
+        // secondary ripples
+        h += sin( p.x * 0.60 + p.y * 0.30 + uFlow * 2.2  ) * 0.07;
+        h += sin( p.x * 0.45 - p.y * 0.22 + uFlow * 1.8  ) * 0.06;
+        // fine surface chop
+        h += sin( p.x * 1.40 + p.y * 0.80 + uFlow * 3.5  ) * 0.025;
+        h += cos( p.x * 1.10 - p.y * 0.60 + uFlow * 2.9  ) * 0.020;
+        return h;
       }
 
-      positions.needsUpdate = true;
+      void main() {
+        vUv = uv;
+        vec3 pos = position;
+        pos.y = riverHeight(pos.xz);
+        vHeight = pos.y;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float uTime;
+      uniform float uFlow;
+      uniform float uScrollT;
+      varying vec2  vUv;
+      varying float vHeight;
 
-      plane.rotation.z += 0.0008;
+      void main() {
+        // ── base colour: bright river blues, occasional green shimmer ──
+        vec3 deepWater   = vec3(0.02, 0.10, 0.30);   // deep sapphire blue
+        vec3 midWater    = vec3(0.04, 0.28, 0.58);   // bright cobalt blue
+        vec3 shallowCap  = vec3(0.10, 0.60, 0.72);   // cyan-blue with a touch of green
+        vec3 foamWhite   = vec3(0.78, 0.94, 0.98);   // near-white with cool blue tint
 
-      renderer.render(scene, camera);
-    }
+        // occasional green shimmer — varies with flow and position
+        vec3 greenShimmer = vec3(0.08, 0.55, 0.38);
+        float greenMask = sin(vUv.x * 5.2 + uFlow * 0.4) * sin(vUv.y * 3.8 - uFlow * 0.3);
+        greenMask = smoothstep(0.55, 1.0, greenMask) * 0.30;  // sparse, subtle
 
-    animate();
+        // map height to colour bands
+        float t = (vHeight + 0.45) / 0.90;          // 0..1
+        t = clamp(t, 0.0, 1.0);
 
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
+        vec3 col = mix(deepWater, midWater,   smoothstep(0.0, 0.45, t));
+        col      = mix(col,       shallowCap, smoothstep(0.45, 0.80, t));
+        col      = mix(col,       foamWhite,  smoothstep(0.80, 1.00, t));
 
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
+        // blend in occasional green patches
+        col = mix(col, greenShimmer, greenMask * (1.0 - t * 0.5));
+
+        // overall brightness lift
+        col = col * 1.30;
+
+        // ── flowing highlight streaks (current lines) ──
+        // streaks run along world-X (right to left), encoded in vUv.x offset by flow
+        float streak = vUv.x - uFlow * 0.07;
+        streak = mod(streak * 8.0, 1.0);
+        float line = smoothstep(0.88, 1.0, streak) * smoothstep(1.0, 0.88, streak + 0.04);
+        // modulate streak brightness by position in U to break uniformity
+        float var = sin(vUv.y * 31.0 + uFlow * 0.5) * 0.5 + 0.5;
+        col += vec3(0.78, 0.94, 0.98) * line * 0.22 * var;
+
+        // ── deeper colour as user scrolls down (river grows darker / deeper) ──
+        col = mix(col, col * 0.55, uScrollT * 0.6);
+
+        // ── subtle vignette from sides ──
+        float vignX = smoothstep(0.0, 0.18, vUv.x) * smoothstep(1.0, 0.82, vUv.x);
+        col *= mix(0.50, 1.0, vignX);
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `,
+    side: THREE.DoubleSide,
+  });
+
+  const plane = new THREE.Mesh(geometry, material);
+  scene.add(plane);
+
+  // Very faint ambient so the dark troughs stay readable
+  scene.add(new THREE.AmbientLight(0x0a2040, 1.2));
+  const dirLight = new THREE.DirectionalLight(0x5adaff, 0.6);
+  dirLight.position.set(-5, 8, 3);
+  scene.add(dirLight);
+
+  // ── Scroll tracking ──────────────────────────────────────────────────────
+  let scrollY     = 0;
+  let scrollRatio = 0;   // 0..1 across the full page height
+
+  window.addEventListener("scroll", () => {
+    scrollY     = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    scrollRatio = maxScroll > 0 ? scrollY / maxScroll : 0;
+  });
+
+  // ── Animation loop ───────────────────────────────────────────────────────
+  let then = 0;
+  function animate(now) {
+    requestAnimationFrame(animate);
+    const dt = (now - then) * 0.001;
+    then = now;
+
+    // Base current speed + extra speed proportional to scroll position
+    // (the deeper you scroll down the page, the faster the river)
+    const currentSpeed = 0.55 + scrollRatio * 1.2;
+    material.uniforms.uFlow.value    += dt * currentSpeed;
+    material.uniforms.uTime.value     = now * 0.001;
+    material.uniforms.uScrollT.value  = scrollRatio;
+
+    // Camera drifts slightly right→left (along -X) as the river flows,
+    // reinforcing the sense of being carried downstream
+    camera.position.x = -material.uniforms.uFlow.value * 0.04;
+    // Also tilt camera slightly as user scrolls down for parallax depth
+    camera.position.z = -scrollRatio * 2.0;
+    camera.lookAt(camera.position.x, 0, camera.position.z);
+
+    renderer.render(scene, camera);
+  }
+  animate(0);
+
+  // ── Resize ───────────────────────────────────────────────────────────────
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+</script>
 
 </body>
 </html>
