@@ -443,13 +443,13 @@ footer {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   const stops = [
-    { lat:35.335, lng:39.551, color:"#4fc3f7", name:"Al Kasrah (Departure)" },
-    { lat:36.146, lng:38.554, color:"#ffd54f", name:"Jebel Aruda" },
-    { lat:36.139, lng:38.754, color:"#ef9a9a", name:"Tell Munbaqa" },
+    { lat:35.566,  lng:39.917,  color:"#4fc3f7", name:"Al Kasrah (Departure)" },
+    { lat:36.235,  lng:38.098,  color:"#ffd54f", name:"Jebel Aruda — 5,200 yrs old" },
+    { lat:36.219,  lng:38.132,  color:"#ef9a9a", name:"Tell Munbaqa (Ekalte) — 3,400 yrs old" },
   ];
-  const map = L.map('map',{center:[36.165,38.13],zoom:12,scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
-    attribution:'&copy; OpenStreetMap &copy; CARTO',subdomains:'abcd',maxZoom:19
+  const map = L.map('map',{center:[36.0, 38.7],zoom:9,scrollWheelZoom:false});
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+    attribution:'Tiles &copy; Esri &mdash; Source: Esri, USGS, NOAA',maxZoom:19
   }).addTo(map);
   stops.forEach(s=>{
     L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:`<div style="width:14px;height:14px;border-radius:50%;background:${s.color};border:3px solid white;box-shadow:0 0 10px ${s.color}"></div>`,iconAnchor:[7,7]})})
